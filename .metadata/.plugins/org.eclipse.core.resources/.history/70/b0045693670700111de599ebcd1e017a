@@ -1,0 +1,85 @@
+package StepDefinitions;
+
+import java.io.File;
+import java.io.IOException;
+import java.util.List;
+import java.util.Map;
+
+import org.apache.pdfbox.pdmodel.PDDocument;
+import org.testng.Assert;
+
+import DataSetup.ExcelReader;
+import TestSetup.CustomPDFStripper;
+import io.cucumber.java.en.Given;
+import io.cucumber.java.en.Then;
+import io.cucumber.java.en.When;
+
+public class PDFStepDefinitions {
+    PDDocument document;
+    
+    @Given("user has the PDF file {string}")
+    public void loadPDF(String fileName) throws IOException {
+        document = PDDocument.load(new File("src/test/resources/" + fileName)); // Load PDF
+    }
+
+    @When("user validates all pages of the PDF")
+    public void validateDetails() throws IOException {
+        int pageCount = document.getNumberOfPages(); // Get page count
+        for (int i = 1; i <= pageCount; i++) {
+            CustomPDFStripper stripper = new CustomPDFStripper();
+            stripper.setStartPage(i);
+            stripper.setEndPage(i);
+            String pageText = stripper.getText(document);
+            // logic to compare pageText with Excel row 'i'
+        }
+   }
+    public void validate_pdf_against_excel() throws IOException {
+        for (int i = 1; i <= document.getNumberOfPages(); i++) {
+            Map<String, String> expected = excelData.get(i - 1);
+            
+            CustomPDFStripper stripper = new CustomPDFStripper();
+            stripper.setStartPage(i);
+            stripper.setEndPage(i);
+            String actualText = stripper.getText(document);
+
+            // A. Validate Text (Check for Text Mismatch)
+            Assert.assertTrue("TEXT MISMATCH on Page " + i + 
+                "\nExpected: " + expected.get("ExpectedText") + 
+                "\nActual: " + actualText, 
+                actualText.contains(expected.get("ExpectedText")));
+
+            // B. Validate Font (Check for Font Mismatch)
+            String actualFont = stripper.getLastFontName();
+            Assert.assertSame("FONT MISMATCH on Page " + i + 
+                "\nExpected: " + expected.get("ExpectedFont") + 
+                "\nActual: " + actualFont, 
+                actualFont.contains(expected.get("ExpectedFont")));
+
+            // C. Validate Color (Check for Color Mismatch)
+            String actualColor = stripper.getLastColor();
+            Assert.assertSame("COLOR MISMATCH on Page " + i + 
+                "\nExpected: " + expected.get("ExpectedColor") + 
+                "\nActual: " + actualColor, 
+                actualColor.equals(expected.get("ExpectedColor")));
+        }
+    }
+    List<Map<String, String>> excelData;
+
+    @When("test data is loaded from {string}")
+    public void test_data_is_loaded_from(String fileName) {
+        // Calling your existing readSheet method
+        // "PDF_Data" is the sheet name in your Excel
+        excelData = ExcelReader.readSheet(fileName, "Sheet1");
+        
+        // Safety check for freshers: verify data isn't empty
+        if (excelData.isEmpty()) {
+            throw new RuntimeException("Excel file is empty or sheet not found: " + fileName);
+        }
+        System.out.println("Successfully loaded " + excelData.size() + " rows of test data.");
+    }
+    
+   
+}
+
+
+

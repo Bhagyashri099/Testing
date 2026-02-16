@@ -1,0 +1,112 @@
+
+package StepDefinitions;
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.chrome.ChromeDriver;
+
+import Pages.IxigoFlightBookingPage;
+//import Pages.LoginPage;
+import SeleniumGrid.DriverFactory;
+import Utils.Config;
+import io.cucumber.java.Before;
+import io.cucumber.java.en.Given;
+import io.cucumber.java.en.Then;
+import io.cucumber.java.en.When;
+
+
+public class IxigoFlightBookingSteps 
+{
+	
+	WebDriver driver = DriverFactory.getDriver();
+	
+	IxigoFlightBookingPage page;
+	//LoginPage login;
+	
+	@Given("user is on login page")
+	public void user_is_on_login_page() throws InterruptedException 
+	{
+		page=new IxigoFlightBookingPage(driver);
+		
+		
+		//page = new IxigoFlightBookingPage(DriverFactory.getDriver()); 
+		
+		//page.openbrowser();
+		page = new IxigoFlightBookingPage(driver);
+		
+		driver.get("https://www.ixigo.com/flights");
+		//DriverFactory.getDriver().get(Config.baseUrl());
+		driver.manage().window().maximize();
+		//login = new LoginPage(DriverFactory.getDriver());
+		
+		page.click_login_signup_button();
+		
+	    	}
+//
+	@When("^user enters the mobileNumber(.*)$")
+	public void user_enters_the_mobile_number(String mob) 
+	{
+		//page.enter_username_mob_no(mob);
+		System.out.println("hi");
+	    	}
+//
+	@When("user clicks on continue for login")
+	public void user_clicks_on_continue_for_login() throws InterruptedException 
+	{
+	    //page.click_continue_for_login();
+		System.out.println("hi");
+		page.enter_destination();
+		page.enter_departure_date();
+	}
+
+
+//	@Given("user is on ixigo flight booking page")
+//	public void user_is_on_ixigo_flight_booking_page() throws InterruptedException 
+//	{
+//		page=new IxigoFlightBookingPage(driver);
+//		page.openbrowser();
+//		
+//	}
+//	public IxigoFlightBookingSteps() {
+//        // 2. Get your driver from your Factory
+//        this.driver = DriverFactory.getDriver(); 
+//        // 3. Initialize the page object here!
+//        this.page = new IxigoFlightBookingPage(this.driver); 
+//    }
+
+
+	@When("^user enters (.*) and (.*)$")
+	public void user_enters_origin_and_destination(String origin, String destnation) throws InterruptedException 
+	{
+		page=new IxigoFlightBookingPage(driver);
+		page.entersourceCity();
+
+		//page.enterDestinationCity(destnation);
+
+	}
+
+	@When("user selects departure date")
+	public void user_selects_departure_date() 
+	{
+
+		//page.selectDateAndSearch();
+	}
+
+	@When("user clicks on Book btn")
+	public void user_clicks_on_book_btn() throws InterruptedException 
+	{
+		//page.clickBookNow();
+	}
+
+	@Then("user clicks on continue button")
+	public void user_clicks_on_continue_button() throws InterruptedException 
+	{
+		//page.clickContinue();
+		
+		
+        //page.closebrowser();
+
+	}
+
+
+}
+
+

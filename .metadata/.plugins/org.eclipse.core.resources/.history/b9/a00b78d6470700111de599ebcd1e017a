@@ -1,0 +1,16 @@
+Feature: Login Test
+
+Scenario: Login for FlightBooking
+Given user opens the url
+When user clicks on login button
+And user enters <mob no> 
+Then user clicks continue
+When user enters <fromCity> and <toCity>
+And user selects the departure date 
+When user clicks on search button
+
+
+Examples:
+|mob no|fromCity| toCity|
+|1| 0| 0| 
+

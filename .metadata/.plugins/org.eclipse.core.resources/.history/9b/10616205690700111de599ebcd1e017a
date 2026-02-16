@@ -1,0 +1,43 @@
+package TestSetup;
+
+import java.io.IOException;
+
+import org.apache.pdfbox.text.PDFTextStripper;
+import org.apache.pdfbox.text.TextPosition;
+
+public class CustomPDFStripper extends PDFTextStripper {
+
+    private String lastFontName = "";
+    private String lastColor = "";
+
+    public CustomPDFStripper() throws IOException {
+        super();
+    }
+
+    @Override
+    protected void processTextPosition(TextPosition text) {
+        // 1. Capture Font Name (e.g., BCDEEE+Aptos)
+        lastFontName = text.getFont().getFontDescriptor().getFontName();
+
+        // 2. Capture Color
+        // For text, we usually look at the "NonStroking" color
+        try {
+            // This returns a string like "[0.0, 0.0, 1.0]" for Blue
+            lastColor = getGraphicsState().getNonStrokingColor().toString();
+        } catch (Exception e) {
+            lastColor = "Unknown";
+        }
+
+        super.processTextPosition(text);
+    }
+
+    // Method called by your Step Definition to validate Font
+    public String getLastFontName() {
+        return lastFontName;
+    }
+
+    // Method called by your Step Definition to validate Color
+    public String getLastColor() {
+        return lastColor;
+    }
+}

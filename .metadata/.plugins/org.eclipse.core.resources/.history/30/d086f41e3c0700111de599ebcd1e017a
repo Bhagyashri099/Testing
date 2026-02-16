@@ -1,0 +1,4 @@
+Feature: Validate the pdf file
+
+Scenario: get the Text from PDF 
+Given 

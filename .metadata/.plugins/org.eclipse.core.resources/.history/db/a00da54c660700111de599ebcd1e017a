@@ -1,0 +1,85 @@
+package StepDefinitions;
+
+import java.io.File;
+import java.io.IOException;
+import java.util.List;
+import java.util.Map;
+
+import org.apache.pdfbox.pdmodel.PDDocument;
+import org.testng.Assert;
+
+import DataSetup.ExcelReader;
+import TestSetup.CustomPDFStripper;
+import io.cucumber.java.en.Given;
+import io.cucumber.java.en.Then;
+import io.cucumber.java.en.When;
+
+public class PDFStepDefinitions {
+    PDDocument document;
+    
+    @Given("user has the PDF file {string}")
+    public void loadPDF(String fileName) throws IOException {
+        document = PDDocument.load(new File("src/test/resources/" + fileName)); // Load PDF
+    }
+
+    @When("user validates all pages of the PDF")
+    public void validateDetails() throws IOException {
+        int pageCount = document.getNumberOfPages(); // Get page count
+        for (int i = 1; i <= pageCount; i++) {
+            CustomPDFStripper stripper = new CustomPDFStripper();
+            stripper.setStartPage(i);
+            stripper.setEndPage(i);
+            String pageText = stripper.getText(document);
+            // logic to compare pageText with Excel row 'i'
+        }
+   }
+    @Then("all text, font types, and colors should match the test data sheet")
+    public void validate_pdf_against_excel() throws IOException {
+        int pageCount = document.getNumberOfPages();
+
+        for (int i = 1; i <= pageCount; i++) {
+            // 1. Fetch Expected Data from Excel for this page
+            // Assuming your Excel row matches the page number
+            Map<String, String> expected = ExcelReader.getData("PDF_Data", i); 
+            
+            // 2. Extract Actual PDF Content for this page
+            CustomPDFStripper stripper = new CustomPDFStripper();
+            stripper.setStartPage(i);
+            stripper.setEndPage(i);
+            String actualText = stripper.getText(document);
+
+            // 3. PERFORM ASSERTIONS (The Validation)
+            
+            // A. Validate Text Presence
+            Assert.assertTrue(actualText.contains(expected.get("ExpectedText")));
+
+            // B. Validate Font (Using contains because of the BCDEEE+ prefix)
+            Assert.assertTrue(stripper.getLastFontName().contains(expected.get("ExpectedFont")));
+
+            // C. Validate Color
+            Assert.assertTrue(stripper.getLastColor().contains(expected.get("ExpectedColor")));
+                
+            System.out.println("Page " + i + " validated successfully!");
+        }
+    
+    }
+    List<Map<String, String>> excelData;
+
+    @When("test data is loaded from {string}")
+    public void test_data_is_loaded_from(String fileName) {
+        // Calling your existing readSheet method
+        // "PDF_Data" is the sheet name in your Excel
+        excelData = ExcelReader.readSheet(fileName, "PDF_Data");
+        
+        // Safety check for freshers: verify data isn't empty
+        if (excelData.isEmpty()) {
+            throw new RuntimeException("Excel file is empty or sheet not found: " + fileName);
+        }
+        System.out.println("Successfully loaded " + excelData.size() + " rows of test data.");
+    }
+    
+   
+}
+
+
+

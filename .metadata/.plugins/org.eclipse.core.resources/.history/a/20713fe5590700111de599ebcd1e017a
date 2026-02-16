@@ -1,0 +1,6 @@
+Feature: Validate the pdf file
+
+Scenario: get the Text from PDF 
+Given the user accesses the sample PDF at "C:/test/sample.pdf"
+When the user compares PDF details with the data sheet "C:/test/TestData.xlsx"
+Then all text, font names, and colors should match the expected values 

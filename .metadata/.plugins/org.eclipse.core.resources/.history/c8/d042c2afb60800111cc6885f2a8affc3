@@ -1,0 +1,57 @@
+package TestSetup;
+
+import java.io.IOException;
+
+import org.apache.pdfbox.pdmodel.graphics.state.PDGraphicsState;
+import org.apache.pdfbox.text.PDFTextStripper;
+import org.apache.pdfbox.text.TextPosition;
+
+public class CustomPDFStripper extends PDFTextStripper {
+
+    private String lastFontName = "";
+    private String lastColor = "";
+
+    public CustomPDFStripper() throws IOException {
+        super();
+    }
+
+    @Override
+    protected void processTextPosition(TextPosition text) {
+    	
+    	String currentFont = (text.getFont() != null) ? text.getFont().getName() : "";
+        
+       //  Only capture the font if it's not empty/null
+    	 try {
+             // Get the graphics state which holds all rendering information
+             PDGraphicsState graphicsState = getGraphicsState();
+             
+             // Get the color used for filling text ("non-stroking" color)
+             float[] components = graphicsState.getNonStrokingColor().getComponents();
+             String colorSpaceName = graphicsState.getNonStrokingColor().getColorSpace().getName();
+
+             // Convert the raw float components into a standard "rgb(r, g, b)" string
+             lastColor = convertToRgbString(components, colorSpaceName);
+             
+         } catch (Exception e) {
+             // This can happen on very complex PDFs or if no color is set
+             lastColor = "Unknown";
+         }
+        super.processTextPosition(text);
+    }
+
+    private String convertToRgbString(float[] components, String colorSpaceName) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	// Method called by Step Definition to validate Font
+    public String getLastFontName() {
+        return lastFontName;
+        
+    }
+
+    // Method called by Step Definition to validate Color
+    public String getLastColor() {
+        return lastColor;
+    }
+}

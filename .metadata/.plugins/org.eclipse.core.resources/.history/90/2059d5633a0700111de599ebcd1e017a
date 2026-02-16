@@ -1,0 +1,47 @@
+package DataSetup;
+import java.io.FileInputStream;
+import java.io.IOException;
+import java.util.Properties;
+
+public class ConfigReader 
+{
+	    private static Properties properties;
+
+	    public ConfigReader() {
+	        try (FileInputStream fis = new FileInputStream("src/test/resources/config.properties")) 
+	        {
+	            properties = new Properties();
+	            properties.load(fis);
+	        } catch (IOException e) {
+	            e.printStackTrace();
+	        }
+	    }
+
+	    public static String getUrl() {
+	        return properties.getProperty("url");
+	    }
+	    
+	    
+	    public String getExecutionEnv() {
+	        return properties.getProperty("execution_env");
+	    }
+
+	    public String getRemoteUrl() {
+	        return properties.getProperty("remote_url");
+	    }
+	    
+	    public String getBrowser() {
+	        
+	            String browserName = properties.getProperty("browser");
+	            if (browserName != null) {
+	                return browserName;
+	            } else {
+	                // Provide a clear error message if the property is missing
+	                throw new RuntimeException("browser property not specified in the config.properties file.");
+	            }
+	    }
+	    
+	    
+	}
+
+

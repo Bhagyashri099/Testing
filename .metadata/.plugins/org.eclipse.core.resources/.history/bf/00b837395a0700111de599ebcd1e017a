@@ -1,0 +1,22 @@
+package StepDefinitions;
+
+public class PDFStepDefinitions {
+    PDDocument document;
+    
+    @Given("user has the PDF file {string}")
+    public void loadPDF(String fileName) throws IOException {
+        document = PDDocument.load(new File("src/test/resources/" + fileName)); // Load PDF
+    }
+
+    @When("user validates all pages of the PDF")
+    public void validateDetails() throws IOException {
+        int pageCount = document.getNumberOfPages(); // Get page count
+        for (int i = 1; i <= pageCount; i++) {
+            CustomPDFStripper stripper = new CustomPDFStripper();
+            stripper.setStartPage(i);
+            stripper.setEndPage(i);
+            String pageText = stripper.getText(document);
+            // logic to compare pageText with Excel row 'i'
+        }
+    }
+}

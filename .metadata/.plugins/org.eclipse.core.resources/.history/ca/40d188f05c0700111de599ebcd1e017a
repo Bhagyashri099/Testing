@@ -1,0 +1,19 @@
+package TestSetup;
+
+import java.io.IOException;
+
+import org.apache.pdfbox.text.PDFTextStripper;
+import org.apache.pdfbox.text.TextPosition;
+
+public class CustomPDFStripper extends PDFTextStripper {
+    public CustomPDFStripper() throws IOException { super(); }
+
+    @Override
+    protected void processTextPosition(TextPosition text) {
+        String fontName = text.getFont().getFontDescriptor().getFontName(); // Extract Font
+        // Color extraction requires graphics state
+        // Note: Real-time color extraction is complex and often requires PDGraphicsState
+        System.out.println("Text: " + text.getUnicode() + " | Font: " + fontName);
+        super.processTextPosition(text);
+    }
+}

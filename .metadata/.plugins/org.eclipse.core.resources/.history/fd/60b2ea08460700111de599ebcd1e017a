@@ -1,0 +1,12 @@
+Feature: Login Test
+
+Scenario: Login for FlightBooking
+Given user opens the url
+When user clicks on login button
+And user enters <mob no> 
+Then user clicks continue
+
+Examples:
+|mob no|
+|1|
+

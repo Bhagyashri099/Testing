@@ -1,0 +1,4 @@
+execution_env=local
+url=https://www.ixigo.com/flights
+remote_url= http://10.88.179.226:4444
+browser=chrome

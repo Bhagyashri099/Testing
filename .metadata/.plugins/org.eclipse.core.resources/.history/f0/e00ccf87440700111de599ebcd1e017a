@@ -1,0 +1,56 @@
+package DataSetup;
+import java.io.FileInputStream;
+import java.io.IOException;
+import java.util.Properties;
+
+public class ConfigReader 
+{
+	
+	    // 1. Declare the properties object
+	    public static Properties properties;
+
+	    public static void loadProperties() {
+	        try {
+	            // 2. INITIALIZE the object (This prevents the NullPointerException)
+	            properties = new Properties();
+	            FileInputStream fis = new FileInputStream("src/test/resources/config.properties");
+	            properties.load(fis);
+	        } catch (Exception e) {
+	            e.printStackTrace();
+	        }
+	    }
+
+	    public static String getUrl() {
+	        // 3. Safety Check: If someone forgot to load, load it now
+	        if (properties == null) {
+	            loadProperties();
+	        }
+	        return properties.getProperty("url");
+	    }
+	
+
+	    
+	    
+	    public String getExecutionEnv() {
+	        return properties.getProperty("execution_env");
+	    }
+
+	    public String getRemoteUrl() {
+	        return properties.getProperty("remote_url");
+	    }
+	    
+	    public String getBrowser() {
+	        
+	            String browserName = properties.getProperty("browser");
+	            if (browserName != null) {
+	                return browserName;
+	            } else {
+	                // Provide a clear error message if the property is missing
+	                throw new RuntimeException("browser property not specified in the config.properties file.");
+	            }
+	    }
+	    
+	    
+	}
+
+

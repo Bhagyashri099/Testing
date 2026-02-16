@@ -1,0 +1,30 @@
+package TestSetup;
+
+import java.io.IOException;
+
+import org.apache.pdfbox.text.PDFTextStripper;
+import org.apache.pdfbox.text.TextPosition;
+
+public class CustomPDFStripper extends PDFTextStripper {
+    public CustomPDFStripper() throws IOException { super(); }
+
+    StringBuilder currentWord = new StringBuilder();
+
+    @Override
+    protected void processTextPosition(TextPosition text) {
+        String character = text.getUnicode();
+        
+        // If it's not a space, add to our word
+        if (!character.equals(" ")) {
+            currentWord.append(character);
+        } else {
+            // Space found! Print the full word and its font
+            if (currentWord.length() > 0) {
+                String fontName = text.getFont().getFontDescriptor().getFontName();
+                System.out.println("Validated Word: " + currentWord + " | Font: " + fontName);
+                currentWord.setLength(0); // Reset for next word
+            }
+        }
+        super.processTextPosition(text);
+    }
+    }

@@ -1,0 +1,57 @@
+package TestSetup;
+
+import java.io.IOException;
+
+import org.apache.pdfbox.text.PDFTextStripper;
+import org.apache.pdfbox.text.TextPosition;
+
+public class CustomPDFStripper extends PDFTextStripper {
+
+    private String lastFontName = "";
+    private String lastColor = "";
+
+    public CustomPDFStripper() throws IOException {
+        super();
+    }
+
+    @Override
+    protected void processTextPosition(TextPosition text) {
+    	package TestSetup;
+
+    	import java.io.IOException;
+    	import java.util.Arrays;
+    	import org.apache.pdfbox.text.PDFTextStripper;
+    	import org.apache.pdfbox.text.TextPosition;
+
+    	public class CustomPDFStripper extends PDFTextStripper {
+    	    private String lastFontName = "";
+    	    private String lastColor = "";
+
+    	    public CustomPDFStripper() throws IOException {
+    	        super();
+    	    }
+
+    	    @Override
+    	    protected void processTextPosition(TextPosition text) {
+    	        // 1. Capture Font Name
+    	        if (text.getFont() != null) {
+    	            lastFontName = text.getFont().getName();
+    	        }
+
+    	        // 2. Capture Color
+    	        try {
+    	            float[] components = getGraphicsState().getNonStrokingColor().getComponents();
+    	            lastColor = Arrays.toString(components);
+    	        } catch (Exception e) {
+    	            lastColor = "Unknown";
+    	        }
+
+    	        // 3. Call super ONCE to continue standard processing
+    	        super.processTextPosition(text);
+    	    }
+
+    	    public String getLastFontName() { return lastFontName; }
+    	    public String getLastColor() { return lastColor; }
+    	}
+
+

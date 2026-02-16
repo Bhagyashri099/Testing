@@ -1,0 +1,20 @@
+Feature: Login Test
+
+@only
+Scenario Outline: Login for FlightBooking
+Given user opens the url
+When user clicks on login button
+And user enters <mob no> 
+Then user clicks continue
+
+
+
+
+Example:
+|mob_no|
+|9359751866|
+
+
+
+
+
