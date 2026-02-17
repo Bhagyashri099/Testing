@@ -3,10 +3,9 @@ package RunnerClasss;
 import io.cucumber.testng.AbstractTestNGCucumberTests;
 import io.cucumber.testng.CucumberOptions;
 
-@CucumberOptions(features= {"C:\\Users\\budchane\\Desktop\\New folder\\WP\\CucumberSelenium\\src\\test\\resources\\FeatureFiles\\login.feature"},
+@CucumberOptions(features= {"\"src/test/resources/FeatureFiles\""},
 glue= {"StepDefinitions", "TestSetup"},
-plugin= {"pretty", "com.aventstack.extentreports.cucumber.adapter.ExtentCucumberAdapter:"},
-tags= "@only"
+plugin= {"pretty", "com.aventstack.extentreports.cucumber.adapter.ExtentCucumberAdapter:"}
 )
 
  public class TestRunner extends AbstractTestNGCucumberTests{
