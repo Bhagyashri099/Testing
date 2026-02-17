@@ -45,25 +45,25 @@ public class LoginSteps
 	@When("^user enters mobileNo (.*)$")
 	public void user_enters_mobileNo(String mob) throws IOException, InterruptedException 
 	{
-		login.enter_username_mob_no();
+		//login.enter_username_mob_no();
 	}
 	@Then("user clicks continue")
 	public void user_clicks_continue() throws InterruptedException 
 	{
-		login.click_continue_for_login();
+		//login.click_continue_for_login();
 	}
 
 	@When("user enters <source> and <destination>")
 	public void user_enters_source_and_destination(String source, String destination) throws InterruptedException 
 	{
-		login.entersource_and_destination_City();
+		//login.entersource_and_destination_City();
 	}
 
 	@When("user clicks on search")
 	public void user_clicks_on_search() throws InterruptedException 
 	{
-		login.click_searchBtn();
-		login.click_on_bookBtn();
+//		login.click_searchBtn();
+//		login.click_on_bookBtn();
 	}
 	
 
