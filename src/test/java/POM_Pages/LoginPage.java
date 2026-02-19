@@ -28,7 +28,7 @@ public class LoginPage
 	//private final By SourceCity1= By.xpath("//p[@data-testid='originId']/ancestor::div[contains(@class,'px-15') and contains(@class,'py-10')][1]");
 	private final By DestinationCity= By.xpath("//p[@data-testid='destinationId']//span[text()='To']");
 
-	private final By searchbox=By.xpath("//div[.//label[normalize-space()='From']]//input[1]");
+	private final By searchbox=By.xpath("//input[@class='outline-none w-full bg-transparent placeholder:text-disabled pt-3 focus:caret-selection text-primary placeholder:opacity-0 focus:placeholder:opacity-100 font-medium text-lg !pt-5']");
 	private final By destsearchbox=By.xpath("(//div[.//label[normalize-space()='To']]//input)[2]");
 	//private final By DepartureDate=By.xpath("(//button//abbr[@aria-label='February 17, 2026'])");
 	private final By searchBtn=By.xpath("//button[contains(text(), 'Search')]");
@@ -62,14 +62,14 @@ public class LoginPage
 		//List<Map<String, String>> cols = ExcelReader.readSheet("C:\\Users\\budchane\\Desktop\\New folder\\WP\\CucumberSelenium\\src\\test\\resources\\TestData.xlsx", "Sheet1");
 		List<Map<String, String>> cols = ExcelReader.readSheet("TestData/TestData.xlsx", "Sheet1");
 		WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(20));
-		Thread.sleep(5000);
+		
 		wait.until(ExpectedConditions.visibilityOfElementLocated(MobNo));
-		//wait.until(ExpectedConditions.elementToBeClickable(driver.findElement(MobNo)));
+		wait.until(ExpectedConditions.elementToBeClickable(driver.findElement(MobNo)));
 		for (Map<String, String> col : cols) {
 			String mob_no = col.get("mob_no");
 			//WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(20));
 			System.out.println(mob_no);
-			//  driver.findElement(MobNo).sendKeys(mob_no);
+			 driver.findElement(MobNo).sendKeys(mob_no);
 		}
 	}
 
@@ -77,25 +77,27 @@ public class LoginPage
 	{
 		driver.findElement(ContinueBtn).click();
 		WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(20));
-		//wait.until(ExpectedConditions.titleIs("Flight Booking, Cheap Flights, Air Tickets at Lowest Fare | ixigo"));
-		//wait.until(ExpectedConditions.elementToBeClickable(driver.findElement(By.xpath("//span[contains(@class,'truncate') and normalize-space()='Automation'][1]"))));
+		
 		Thread.sleep(20000);
 	}
 
-	public void entersource_and_destination_City() throws InterruptedException
+	public void entersource_and_destination_City(String source, String destination) throws InterruptedException
 	{
-
+		wait.until(ExpectedConditions.visibilityOfElementLocated(SourceCity));
 		driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(15));
 		driver.findElement(SourceCity).click();
 		driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(5));
 		List<Map<String, String>> cols = ExcelReader.readSheet("TestData/TestData.xlsx", "Sheet1");
 		for (Map<String, String> col : cols) {
 			String sourceCity = col.get("fromCity");
+			
 			driver.findElement(searchbox).sendKeys(sourceCity);
 			Thread.sleep(2000);
-			driver.findElement(By.xpath("//div[@role='listitem'][contains(.,'" + sourceCity + "')]")).click();
+			
+			//driver.findElement(By.xpath("(//div[@role='listitem'])//span[contains(text(), 'PNQ')]")).click();
+			driver.findElement(By.xpath("(//div[@role='listitem'][contains(.,'" + sourceCity + "')])[1]")).click();
 			String DCity = col.get("toCity"); 
-
+			//driver.findElement(DestinationCity).click();
 			driver.findElement(destsearchbox).sendKeys(DCity);
 			Thread.sleep(5000);
 			driver.findElement(By.xpath("(//div[@role='listitem'][contains(.,'"+ DCity +"')])[3]")).click();
@@ -104,7 +106,7 @@ public class LoginPage
 	}
 	public void click_searchBtn() throws InterruptedException
 	{
-		Thread.sleep(2000);
+		//Thread.sleep(2000);
 		driver.findElement(searchBtn).click();
 	}
 	public void click_on_bookBtn() throws InterruptedException

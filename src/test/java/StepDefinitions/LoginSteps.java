@@ -29,10 +29,11 @@ public class LoginSteps
 	private static final Logger log = LogManager.getLogger(LoggerClass.class);
 
 	@Given("user opens the url")
-	public void user_opens_the_url() 
+	public void user_opens_the_url() throws InterruptedException 
 	{
 		//this.driver = Hooks.driver; 
 		login=new LoginPage(driver);
+		
 
 	}
 
@@ -40,30 +41,34 @@ public class LoginSteps
 	public void user_clicks_on_login_button() throws InterruptedException 
 	{
 		login.click_login_signup_button();
-	}
+			}
 
 	@When("^user enters mobileNo (.*)$")
 	public void user_enters_mobileNo(String mob) throws IOException, InterruptedException 
 	{
-		//login.enter_username_mob_no();
+		login.enter_username_mob_no();
+		//login.enter_destination();
 	}
 	@Then("user clicks continue")
 	public void user_clicks_continue() throws InterruptedException 
 	{
-		//login.click_continue_for_login();
+		login.click_continue_for_login();
+		//login.enter_departure_date();
 	}
 
-	@When("user enters <source> and <destination>")
+	@When("^user enters (.*) and (.*)$")
 	public void user_enters_source_and_destination(String source, String destination) throws InterruptedException 
 	{
-		//login.entersource_and_destination_City();
+		login.entersource_and_destination_City(source, destination);
+		login.click_searchBtn();
+		//login.click_on_bookBtn();
 	}
 
 	@When("user clicks on search")
 	public void user_clicks_on_search() throws InterruptedException 
 	{
-//		login.click_searchBtn();
-//		login.click_on_bookBtn();
+	//login.click_searchBtn();
+	//login.click_on_bookBtn();
 	}
 	
 
