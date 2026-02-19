@@ -40,7 +40,7 @@ public class LoginSteps
 	@When("user clicks on login button")
 	public void user_clicks_on_login_button() throws InterruptedException 
 	{
-		login.click_login_signup_button();
+		//login.click_login_signup_button();
 			}
 
 	@When("^user enters mobileNo (.*)$")

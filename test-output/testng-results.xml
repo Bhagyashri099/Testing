@@ -1,27 +1,28 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testng-results ignored="0" total="2" passed="1" failed="1" skipped="0">
+<testng-results ignored="0" total="4" passed="4" failed="0" skipped="0">
   <reporter-output>
   </reporter-output>
-  <suite started-at="2026-02-19T09:41:10 IST" name="Suite" finished-at="2026-02-19T09:43:29 IST" duration-ms="139006">
+  <suite started-at="2026-02-19T11:46:36 IST" name="Suite" finished-at="2026-02-19T11:46:51 IST" duration-ms="14984">
     <groups>
       <group name="cucumber">
-        <method signature="AbstractTestNGCucumberTests.runScenario(io.cucumber.testng.PickleWrapper,io.cucumber.testng.FeatureWrapper)[pri:0, instance:RunnerClasss.TestRunner@6f0b0a5e]" name="runScenario" class="io.cucumber.testng.AbstractTestNGCucumberTests"/>
+        <method signature="AbstractTestNGCucumberTests.runScenario(io.cucumber.testng.PickleWrapper,io.cucumber.testng.FeatureWrapper)[pri:0, instance:RunnerClasss.SecondRunner@2974f221]" name="runScenario" class="io.cucumber.testng.AbstractTestNGCucumberTests"/>
+        <method signature="AbstractTestNGCucumberTests.runScenario(io.cucumber.testng.PickleWrapper,io.cucumber.testng.FeatureWrapper)[pri:0, instance:RunnerClasss.TestRunner@6035b93b]" name="runScenario" class="io.cucumber.testng.AbstractTestNGCucumberTests"/>
       </group> <!-- cucumber -->
     </groups>
-    <test started-at="2026-02-19T09:41:10 IST" name="Test" finished-at="2026-02-19T09:43:29 IST" duration-ms="139006">
+    <test started-at="2026-02-19T11:46:36 IST" name="Test" finished-at="2026-02-19T11:46:51 IST" duration-ms="14984">
       <class name="RunnerClasss.TestRunner">
-        <test-method is-config="true" signature="setUpClass(org.testng.ITestContext)[pri:0, instance:RunnerClasss.TestRunner@6f0b0a5e]" started-at="2026-02-19T09:41:10 IST" name="setUpClass" finished-at="2026-02-19T09:41:12 IST" duration-ms="1212" status="PASS">
+        <test-method is-config="true" signature="setUpClass(org.testng.ITestContext)[pri:0, instance:RunnerClasss.TestRunner@6035b93b]" started-at="2026-02-19T11:46:36 IST" name="setUpClass" finished-at="2026-02-19T11:46:36 IST" duration-ms="369" status="PASS">
           <params>
             <param index="0">
               <value>
-                <![CDATA[org.testng.TestRunner@70805849]]>
+                <![CDATA[org.testng.TestRunner@103e7c7c]]>
               </value>
             </param>
           </params>
           <reporter-output>
           </reporter-output>
         </test-method> <!-- setUpClass -->
-        <test-method signature="runScenario(io.cucumber.testng.PickleWrapper,io.cucumber.testng.FeatureWrapper)[pri:0, instance:RunnerClasss.TestRunner@6f0b0a5e]" started-at="2026-02-19T09:41:12 IST" name="runScenario" description="Runs Cucumber Scenarios" data-provider="scenarios" finished-at="2026-02-19T09:42:13 IST" duration-ms="61367" status="FAIL">
+        <test-method signature="runScenario(io.cucumber.testng.PickleWrapper,io.cucumber.testng.FeatureWrapper)[pri:0, instance:RunnerClasss.TestRunner@6035b93b]" started-at="2026-02-19T11:46:36 IST" name="runScenario" description="Runs Cucumber Scenarios" data-provider="scenarios" finished-at="2026-02-19T11:46:42 IST" duration-ms="5404" status="PASS">
           <params>
             <param index="0">
               <value>
@@ -34,36 +35,10 @@
               </value>
             </param>
           </params>
-          <exception class="org.openqa.selenium.TimeoutException">
-            <message>
-              <![CDATA[Expected condition failed: waiting for visibility of element found by By.xpath: //input[@placeholder='Enter Mobile Number'], but... org.openqa.selenium.NoSuchElementException: no such element: Unable to locate element: {"method":"xpath","selector":"//input[@placeholder='Enter Mobile Number']"}.
-(tried for 20 seconds with 500 milliseconds interval)
-Build info: version: '4.40.0', revision: 'b3333f1'
-System info: os.name: 'Windows 11', os.arch: 'amd64', os.version: '10.0', java.version: '21.0.9'
-Driver info: org.openqa.selenium.chrome.ChromeDriver
-Capabilities {acceptInsecureCerts: false, browserName: chrome, browserVersion: 144.0.7559.133, chrome: {chromedriverVersion: 144.0.7559.133 (7da823b1d59..., userDataDir: C:\Users\budchane\AppData\L...}, fedcm:accounts: true, goog:chromeOptions: {debuggerAddress: localhost:63969}, goog:processID: 26952, networkConnectionEnabled: false, pageLoadStrategy: normal, platformName: windows, proxy: Proxy(), se:cdp: ws://localhost:63969/devtoo..., se:cdpVersion: 144.0.7559.133, setWindowRect: true, strictFileInteractability: false, timeouts: {implicit: 0, pageLoad: 300000, script: 30000}, unhandledPromptBehavior: dismiss and notify, webauthn:extension:credBlob: true, webauthn:extension:largeBlob: true, webauthn:extension:minPinLength: true, webauthn:extension:prf: true, webauthn:virtualAuthenticators: true}
-Session ID: 735d937cb287f3a21800ca97801ddc08]]>
-            </message>
-            <full-stacktrace>
-              <![CDATA[org.openqa.selenium.TimeoutException: Expected condition failed: waiting for visibility of element found by By.xpath: //input[@placeholder='Enter Mobile Number'], but... org.openqa.selenium.NoSuchElementException: no such element: Unable to locate element: {"method":"xpath","selector":"//input[@placeholder='Enter Mobile Number']"}.
-(tried for 20 seconds with 500 milliseconds interval)
-Build info: version: '4.40.0', revision: 'b3333f1'
-System info: os.name: 'Windows 11', os.arch: 'amd64', os.version: '10.0', java.version: '21.0.9'
-Driver info: org.openqa.selenium.chrome.ChromeDriver
-Capabilities {acceptInsecureCerts: false, browserName: chrome, browserVersion: 144.0.7559.133, chrome: {chromedriverVersion: 144.0.7559.133 (7da823b1d59..., userDataDir: C:\Users\budchane\AppData\L...}, fedcm:accounts: true, goog:chromeOptions: {debuggerAddress: localhost:63969}, goog:processID: 26952, networkConnectionEnabled: false, pageLoadStrategy: normal, platformName: windows, proxy: Proxy(), se:cdp: ws://localhost:63969/devtoo..., se:cdpVersion: 144.0.7559.133, setWindowRect: true, strictFileInteractability: false, timeouts: {implicit: 0, pageLoad: 300000, script: 30000}, unhandledPromptBehavior: dismiss and notify, webauthn:extension:credBlob: true, webauthn:extension:largeBlob: true, webauthn:extension:minPinLength: true, webauthn:extension:prf: true, webauthn:virtualAuthenticators: true}
-Session ID: 735d937cb287f3a21800ca97801ddc08
-at org.openqa.selenium.support.ui.WebDriverWait.timeoutException(WebDriverWait.java:84)
-at org.openqa.selenium.support.ui.FluentWait.until(FluentWait.java:231)
-at POM_Pages.LoginPage.enter_username_mob_no(LoginPage.java:66)
-at StepDefinitions.LoginSteps.user_enters_mobileNo(LoginSteps.java:49)
-at ✽.user enters mobileNo 9359751866(file:///C:/Users/budchane/Desktop/New%20folder/WP/CucumberSelenium/src/test/resources/FeatureFiles/login.feature:6)
-]]>
-            </full-stacktrace>
-          </exception> <!-- org.openqa.selenium.TimeoutException -->
           <reporter-output>
           </reporter-output>
         </test-method> <!-- runScenario -->
-        <test-method signature="runScenario(io.cucumber.testng.PickleWrapper,io.cucumber.testng.FeatureWrapper)[pri:0, instance:RunnerClasss.TestRunner@6f0b0a5e]" started-at="2026-02-19T09:42:13 IST" name="runScenario" description="Runs Cucumber Scenarios" data-provider="scenarios" finished-at="2026-02-19T09:43:26 IST" duration-ms="72634" status="PASS">
+        <test-method signature="runScenario(io.cucumber.testng.PickleWrapper,io.cucumber.testng.FeatureWrapper)[pri:0, instance:RunnerClasss.TestRunner@6035b93b]" started-at="2026-02-19T11:46:42 IST" name="runScenario" description="Runs Cucumber Scenarios" data-provider="scenarios" finished-at="2026-02-19T11:46:47 IST" duration-ms="5324" status="PASS">
           <params>
             <param index="0">
               <value>
@@ -79,11 +54,60 @@ at ✽.user enters mobileNo 9359751866(file:///C:/Users/budchane/Desktop/New%20f
           <reporter-output>
           </reporter-output>
         </test-method> <!-- runScenario -->
-        <test-method is-config="true" signature="tearDownClass()[pri:0, instance:RunnerClasss.TestRunner@6f0b0a5e]" started-at="2026-02-19T09:43:26 IST" name="tearDownClass" finished-at="2026-02-19T09:43:29 IST" duration-ms="3716" status="PASS">
+        <test-method is-config="true" signature="tearDownClass()[pri:0, instance:RunnerClasss.TestRunner@6035b93b]" started-at="2026-02-19T11:46:47 IST" name="tearDownClass" finished-at="2026-02-19T11:46:50 IST" duration-ms="2944" status="PASS">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- tearDownClass -->
       </class> <!-- RunnerClasss.TestRunner -->
+      <class name="RunnerClasss.SecondRunner">
+        <test-method is-config="true" signature="setUpClass(org.testng.ITestContext)[pri:0, instance:RunnerClasss.SecondRunner@2974f221]" started-at="2026-02-19T11:46:50 IST" name="setUpClass" finished-at="2026-02-19T11:46:50 IST" duration-ms="32" status="PASS">
+          <params>
+            <param index="0">
+              <value>
+                <![CDATA[org.testng.TestRunner@103e7c7c]]>
+              </value>
+            </param>
+          </params>
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- setUpClass -->
+        <test-method signature="runScenario(io.cucumber.testng.PickleWrapper,io.cucumber.testng.FeatureWrapper)[pri:0, instance:RunnerClasss.SecondRunner@2974f221]" started-at="2026-02-19T11:46:50 IST" name="runScenario" description="Runs Cucumber Scenarios" data-provider="scenarios" finished-at="2026-02-19T11:46:50 IST" duration-ms="30" status="PASS">
+          <params>
+            <param index="0">
+              <value>
+                <![CDATA["Login for FlightBooking"]]>
+              </value>
+            </param>
+            <param index="1">
+              <value>
+                <![CDATA["Login Test"]]>
+              </value>
+            </param>
+          </params>
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- runScenario -->
+        <test-method signature="runScenario(io.cucumber.testng.PickleWrapper,io.cucumber.testng.FeatureWrapper)[pri:0, instance:RunnerClasss.SecondRunner@2974f221]" started-at="2026-02-19T11:46:50 IST" name="runScenario" description="Runs Cucumber Scenarios" data-provider="scenarios" finished-at="2026-02-19T11:46:50 IST" duration-ms="167" status="PASS">
+          <params>
+            <param index="0">
+              <value>
+                <![CDATA["Validate text, font, and color of multi-page PDF"]]>
+              </value>
+            </param>
+            <param index="1">
+              <value>
+                <![CDATA["PDF Detail Validation"]]>
+              </value>
+            </param>
+          </params>
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- runScenario -->
+        <test-method is-config="true" signature="tearDownClass()[pri:0, instance:RunnerClasss.SecondRunner@2974f221]" started-at="2026-02-19T11:46:50 IST" name="tearDownClass" finished-at="2026-02-19T11:46:51 IST" duration-ms="655" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- tearDownClass -->
+      </class> <!-- RunnerClasss.SecondRunner -->
     </test> <!-- Test -->
   </suite> <!-- Suite -->
 </testng-results>
