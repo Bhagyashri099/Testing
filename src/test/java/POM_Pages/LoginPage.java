@@ -60,65 +60,65 @@ public class LoginPage
 	public void enter_username_mob_no() throws IOException, InterruptedException
 	{
 		//List<Map<String, String>> cols = ExcelReader.readSheet("C:\\Users\\budchane\\Desktop\\New folder\\WP\\CucumberSelenium\\src\\test\\resources\\TestData.xlsx", "Sheet1");
-		List<Map<String, String>> cols = ExcelReader.readSheet("TestData/TestData.xlsx", "Sheet1");
-		WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(20));
-		
-		wait.until(ExpectedConditions.visibilityOfElementLocated(MobNo));
-		wait.until(ExpectedConditions.elementToBeClickable(driver.findElement(MobNo)));
-		for (Map<String, String> col : cols) {
-			String mob_no = col.get("mob_no");
-			//WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(20));
-			System.out.println(mob_no);
-			 driver.findElement(MobNo).sendKeys(mob_no);
-		}
+//		List<Map<String, String>> cols = ExcelReader.readSheet("TestData/TestData.xlsx", "Sheet1");
+//		WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(20));
+//		
+//		wait.until(ExpectedConditions.visibilityOfElementLocated(MobNo));
+//		wait.until(ExpectedConditions.elementToBeClickable(driver.findElement(MobNo)));
+//		for (Map<String, String> col : cols) {
+//			String mob_no = col.get("mob_no");
+//			//WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(20));
+//			System.out.println(mob_no);
+//			 driver.findElement(MobNo).sendKeys(mob_no);
+//		}
 	}
 
 	public void click_continue_for_login() throws InterruptedException
 	{
-		driver.findElement(ContinueBtn).click();
-		WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(20));
-		
+//		driver.findElement(ContinueBtn).click();
+//		WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(20));
+//		
 		Thread.sleep(20000);
 	}
 
 	public void entersource_and_destination_City(String source, String destination) throws InterruptedException
 	{
-		wait.until(ExpectedConditions.visibilityOfElementLocated(SourceCity));
-		driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(15));
-		driver.findElement(SourceCity).click();
-		driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(5));
-		List<Map<String, String>> cols = ExcelReader.readSheet("TestData/TestData.xlsx", "Sheet1");
-		for (Map<String, String> col : cols) {
-			String sourceCity = col.get("fromCity");
-			
-			driver.findElement(searchbox).sendKeys(sourceCity);
-			Thread.sleep(2000);
-			
-			//driver.findElement(By.xpath("(//div[@role='listitem'])//span[contains(text(), 'PNQ')]")).click();
-			driver.findElement(By.xpath("(//div[@role='listitem'][contains(.,'" + sourceCity + "')])[1]")).click();
-			String DCity = col.get("toCity"); 
-			//driver.findElement(DestinationCity).click();
-			driver.findElement(destsearchbox).sendKeys(DCity);
-			Thread.sleep(5000);
-			driver.findElement(By.xpath("(//div[@role='listitem'][contains(.,'"+ DCity +"')])[3]")).click();
-
-		}
-	}
-	public void click_searchBtn() throws InterruptedException
-	{
-		//Thread.sleep(2000);
-		driver.findElement(searchBtn).click();
-	}
-	public void click_on_bookBtn() throws InterruptedException
-	{
-		WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(15));
-		wait.until(ExpectedConditions.elementToBeClickable(BookBtn));
-
-		JavascriptExecutor js = (JavascriptExecutor) driver;
-		
-		js.executeScript("window.scrollBy(0, 350)"); 
-		driver.findElement(BookBtn).click();
-	}
+//		wait.until(ExpectedConditions.visibilityOfElementLocated(SourceCity));
+//		driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(15));
+//		driver.findElement(SourceCity).click();
+//		driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(5));
+//		List<Map<String, String>> cols = ExcelReader.readSheet("TestData/TestData.xlsx", "Sheet1");
+//		for (Map<String, String> col : cols) {
+//			String sourceCity = col.get("fromCity");
+//			
+//			driver.findElement(searchbox).sendKeys(sourceCity);
+//			Thread.sleep(2000);
+//			
+//			//driver.findElement(By.xpath("(//div[@role='listitem'])//span[contains(text(), 'PNQ')]")).click();
+//			driver.findElement(By.xpath("(//div[@role='listitem'][contains(.,'" + sourceCity + "')])[1]")).click();
+//			String DCity = col.get("toCity"); 
+//			//driver.findElement(DestinationCity).click();
+//			driver.findElement(destsearchbox).sendKeys(DCity);
+//			Thread.sleep(5000);
+//			driver.findElement(By.xpath("(//div[@role='listitem'][contains(.,'"+ DCity +"')])[3]")).click();
+//
+//		}
+//	}
+//	public void click_searchBtn() throws InterruptedException
+//	{
+//		//Thread.sleep(2000);
+//		driver.findElement(searchBtn).click();
+//	}
+//	public void click_on_bookBtn() throws InterruptedException
+//	{
+//		WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(15));
+//		wait.until(ExpectedConditions.elementToBeClickable(BookBtn));
+//
+//		JavascriptExecutor js = (JavascriptExecutor) driver;
+//		
+//		js.executeScript("window.scrollBy(0, 350)"); 
+//		driver.findElement(BookBtn).click();
+//	}
 	
 
-}
+}}

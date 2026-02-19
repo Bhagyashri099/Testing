@@ -19,7 +19,7 @@ public class CustomPDFStripper extends PDFTextStripper {
     	
     	String currentFont = (text.getFont() != null) ? text.getFont().getName() : "";
         
-       //  Only capture the font if it's not empty/null
+       //   capture the font if it's not empty/null
         if (currentFont != null && !currentFont.trim().isEmpty()) {
             lastFontName = currentFont;
             System.out.println(lastFontName);
@@ -30,7 +30,7 @@ public class CustomPDFStripper extends PDFTextStripper {
         
         
         try {
-            // Get the actual components [0.0, 0.0, 0.0]
+            
             float[] components = getGraphicsState().getNonStrokingColor().getComponents();
             
             // Convert the float array into a string matching Excel: [0.0, 0.0, 0.0]
